@@ -1,14 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "hTC7aBQHNtzUGuYC2UT1Ovvn0tZPLgxyN9uXpHc8wfqt8LLtmiwebl0cL70U7yjehpy418+vsqsij1CrvKoNmg==",
+  "dgSpecHash": "yLi/8bHAdsRk5QRj9VZElsK6WkexifEYzIfduQSmL/z+zUSsXpMmBjUkwKJv0iyrCt1KAfNm+YSBu5wF37DD2Q==",
   "success": true,
   "projectFilePath": "/Users/theoloyaute/Documents/Workspace/Cubes/StreetGuard/Back/Back/Back.csproj",
   "expectedPackageFiles": [
+    "/Users/theoloyaute/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
     "/Users/theoloyaute/.nuget/packages/bcrypt.net-core/1.6.0/bcrypt.net-core.1.6.0.nupkg.sha512",
     "/Users/theoloyaute/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/theoloyaute/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.5/microsoft.aspnetcore.authentication.jwtbearer.7.0.5.nupkg.sha512",
     "/Users/theoloyaute/.nuget/packages/microsoft.aspnetcore.openapi/7.0.5/microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
-    "/Users/theoloyaute/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
+    "/Users/theoloyaute/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/Users/theoloyaute/.nuget/packages/microsoft.entityframeworkcore/8.0.0-preview.3.23174.2/microsoft.entityframeworkcore.8.0.0-preview.3.23174.2.nupkg.sha512",
     "/Users/theoloyaute/.nuget/packages/microsoft.entityframeworkcore.abstractions/8.0.0-preview.3.23174.2/microsoft.entityframeworkcore.abstractions.8.0.0-preview.3.23174.2.nupkg.sha512",
     "/Users/theoloyaute/.nuget/packages/microsoft.entityframeworkcore.analyzers/8.0.0-preview.3.23174.2/microsoft.entityframeworkcore.analyzers.8.0.0-preview.3.23174.2.nupkg.sha512",
