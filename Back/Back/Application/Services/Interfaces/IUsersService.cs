@@ -9,4 +9,5 @@ public interface IUsersService
     Task<Users> Add(Users users);
     Task<Users> Update(Users users);
     void Delete(int id);
+    Task<Users> FindByName(string username);
 }

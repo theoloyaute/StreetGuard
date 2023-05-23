@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "yLi/8bHAdsRk5QRj9VZElsK6WkexifEYzIfduQSmL/z+zUSsXpMmBjUkwKJv0iyrCt1KAfNm+YSBu5wF37DD2Q==",
+  "dgSpecHash": "vke/F9DMNIe785FxHFn8EXdThoajsge5ISMLaMHYCqZb36uaF7ibeC6k7kafGhXxbxq3XMQpAi3bXIDDeUcN2g==",
   "success": true,
   "projectFilePath": "/Users/theoloyaute/Documents/Workspace/Cubes/StreetGuard/Back/Back/Back.csproj",
   "expectedPackageFiles": [
     "/Users/theoloyaute/.nuget/packages/automapper/12.0.1/automapper.12.0.1.nupkg.sha512",
+    "/Users/theoloyaute/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/12.0.1/automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "/Users/theoloyaute/.nuget/packages/bcrypt.net-core/1.6.0/bcrypt.net-core.1.6.0.nupkg.sha512",
     "/Users/theoloyaute/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/theoloyaute/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/7.0.5/microsoft.aspnetcore.authentication.jwtbearer.7.0.5.nupkg.sha512",

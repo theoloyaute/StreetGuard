@@ -1,4 +1,3 @@
-using Back.Api.Error;
 using Back.Domain.Models;
 using Back.Domain.Repositories.Interfaces;
 using Back.Infrastructure.Context;
@@ -8,10 +7,17 @@ namespace Back.Domain.Repositories;
 
 public class UsersRepository : CommonRepository<Users>, IUsersRepository
 {
-    private readonly AppDbContext _context;
+    protected readonly AppDbContext _context;
 
     public UsersRepository(AppDbContext context) : base(context)
     {
         _context = context;
     }
+    
+    public int MaxId() => _context.Users.Max(x => x.Id);
+
+    public async Task<Users> FindByName(string username) => 
+        (await _context.Users.Where(x => x.Username == username)
+            .Include(x => x.Role)
+            .FirstOrDefaultAsync())!;
 }

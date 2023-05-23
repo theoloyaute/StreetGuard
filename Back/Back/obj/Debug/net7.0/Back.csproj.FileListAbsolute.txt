@@ -63,3 +63,4 @@
 /Users/theoloyaute/Documents/Workspace/Cubes/StreetGuard/Back/Back/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
 /Users/theoloyaute/Documents/Workspace/Cubes/StreetGuard/Back/Back/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/theoloyaute/Documents/Workspace/Cubes/StreetGuard/Back/Back/bin/Debug/net7.0/AutoMapper.dll
+/Users/theoloyaute/Documents/Workspace/Cubes/StreetGuard/Back/Back/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
