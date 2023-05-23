@@ -42,7 +42,10 @@ public class UsersService : IUsersService
     {
         var user = await _usersRepository.FindAsync(users.Id);
         if (user is null) throw new NotFoundException("Utilisateur introuvable !");
-        // user = _mapper.Map(users, user);
+        var role = await _roleRepository.FindAsync(users.RoleId);
+        if (role is null) throw new NotFoundException("Role incorrect !");
+        if (user.PowerId is 0) user.PowerId = null;
+        user = _mapper.Map(users, user);
         await _usersRepository.SaveChangesAsync();
         return user;
     }

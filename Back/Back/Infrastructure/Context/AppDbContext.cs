@@ -31,9 +31,7 @@ public partial class AppDbContext : DbContext
         modelBuilder.Entity<Incidents>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("incidents_pkey");
-
-            entity.HasOne(d => d.Power).WithMany(p => p.Incidents).HasConstraintName("incidents_power_id_fkey");
-
+            
             entity.HasOne(d => d.TypeIncident).WithMany(p => p.Incidents).HasConstraintName("incidents_type_incident_id_fkey");
         });
 

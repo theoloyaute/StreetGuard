@@ -29,17 +29,10 @@ public partial class Incidents
     public decimal Latitude { get; set; }
 
     [Column("type_incident_id")]
-    public int? TypeIncidentId { get; set; }
-
-    [Column("power_id")]
-    public int? PowerId { get; set; }
+    public int TypeIncidentId { get; set; }
 
     [InverseProperty("Incidents")]
     public virtual ICollection<Notification> Notification { get; set; } = new List<Notification>();
-
-    [ForeignKey("PowerId")]
-    [InverseProperty("Incidents")]
-    public virtual Power? Power { get; set; }
 
     [ForeignKey("TypeIncidentId")]
     [InverseProperty("Incidents")]
