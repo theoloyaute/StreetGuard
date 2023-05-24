@@ -21,13 +21,14 @@ public class IncidentsService : IIncidentsService
     
     public Task<IEnumerable<Incidents>> ListAsync() => _incidentsRepository.ListAsync();
     
-    public Task<Incidents> FindAsync(int id) => _incidentsRepository.FindAsync(id);
+    public Task<Incidents?> FindAsync(int id) => _incidentsRepository.FindAsync(id);
     
     public async Task<Incidents> Add(Incidents incidents)
     {
         incidents.Id = _incidentsRepository.MaxId() + 1;
         var type = await _incidentTypeRepository.FindAsync(incidents.TypeIncidentId);
         if (type is null) throw new NotFoundException("Type d'incident incorrect !");
+        incidents.TypeIncident = type;
         var incident = _mapper.Map<Incidents>(incidents);
         _incidentsRepository.Add(incident);
         await _incidentsRepository.SaveChangesAsync();
@@ -46,6 +47,7 @@ public class IncidentsService : IIncidentsService
         incident.Latitude = incidents.Latitude;
         incident.TypeIncidentId = incidents.TypeIncidentId;
         incident.TypeIncident = type;
+        _incidentsRepository.Update(incident);
         await _incidentsRepository.SaveChangesAsync();
         return incident;
     }

@@ -18,7 +18,7 @@ public class IncidentsRepository : CommonRepository<Incidents>, IIncidentsReposi
         .Include(x => x.TypeIncident)
         .ToListAsync();
     
-    public new async Task<Incidents> FindAsync(int id) => await _context.Incidents
+    public new async Task<Incidents?> FindAsync(int id) => await _context.Incidents
         .Include(x => x.TypeIncident)
         .FirstOrDefaultAsync(x => x.Id == id);
 

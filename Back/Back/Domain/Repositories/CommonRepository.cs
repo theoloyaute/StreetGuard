@@ -19,7 +19,7 @@ public abstract class CommonRepository<T> : ICommonRepository<T> where T : class
     
     public async Task<IEnumerable<T>> ListAsync() => await _context.Set<T>().ToListAsync();
     
-    public Task<T> FindAsync(int id) => _context.Set<T>().FindAsync(id).AsTask();
+    public async Task<T?> FindAsync(int id) => await _context.Set<T>().FindAsync(id).AsTask();
     
     public T Add(T item) => _context.Set<T>().Add(item).Entity;
     

@@ -36,5 +36,5 @@ public partial class Incidents
 
     [ForeignKey("TypeIncidentId")]
     [InverseProperty("Incidents")]
-    public virtual IncidentType TypeIncident { get; set; } = null!;
+    public virtual IncidentType? TypeIncident { get; set; } = null!;
 }

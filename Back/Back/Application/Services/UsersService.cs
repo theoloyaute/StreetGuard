@@ -23,7 +23,7 @@ public class UsersService : IUsersService
     
     public Task<IEnumerable<Users>> ListAsync() => _usersRepository.ListAsync();
     
-    public Task<Users> FindAsync(int id) => _usersRepository.FindAsync(id);
+    public Task<Users?> FindAsync(int id) => _usersRepository.FindAsync(id);
 
     public async Task<Users> Add(Users users)
     {
@@ -76,9 +76,5 @@ public class UsersService : IUsersService
         _usersRepository.SaveChanges();
     }
 
-    public async Task<Users> FindByName(string username)
-    {
-        var result = await _usersRepository.FindByName(username);
-        return result;
-    }
+    public async Task<Users> FindByName(string username) => await _usersRepository.FindByName(username);
 }
