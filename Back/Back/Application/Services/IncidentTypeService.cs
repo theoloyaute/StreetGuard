@@ -13,7 +13,7 @@ public class IncidentTypeService : IIncidentTypeService
         _incidentTypeRepository = incidentTypeRepository;
     }
     
-    public Task<IEnumerable<TypeIncident>> ListAsync() => _incidentTypeRepository.ListAsync();
+    public Task<IEnumerable<IncidentType>> ListAsync() => _incidentTypeRepository.ListAsync();
     
-    public Task<TypeIncident> FindAsync(int id) => _incidentTypeRepository.FindAsync(id);
+    public Task<IncidentType> FindAsync(int id) => _incidentTypeRepository.FindAsync(id);
 }

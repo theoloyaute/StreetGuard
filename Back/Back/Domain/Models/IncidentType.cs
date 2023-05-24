@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Back.Domain.Models;
 
-[Table("type_incident")]
-public partial class TypeIncident
+[Table("incident_type")]
+public partial class IncidentType
 {
     [Key]
     [Column("id")]

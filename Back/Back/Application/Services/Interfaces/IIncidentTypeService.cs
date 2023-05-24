@@ -4,6 +4,6 @@ namespace Back.Application.Services.Interfaces;
 
 public interface IIncidentTypeService
 {
-    Task<IEnumerable<TypeIncident>> ListAsync();
-    Task<TypeIncident> FindAsync(int id);
+    Task<IEnumerable<IncidentType>> ListAsync();
+    Task<IncidentType> FindAsync(int id);
 }

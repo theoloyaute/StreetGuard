@@ -18,8 +18,5 @@ public partial class Power
     public string Name { get; set; } = null!;
 
     [InverseProperty("Power")]
-    public virtual ICollection<Incidents> Incidents { get; set; } = new List<Incidents>();
-
-    [InverseProperty("Power")]
     public virtual ICollection<Users> Users { get; set; } = new List<Users>();
 }

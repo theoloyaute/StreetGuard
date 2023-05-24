@@ -14,6 +14,11 @@ public class UsersRepository : CommonRepository<Users>, IUsersRepository
         _context = context;
     }
     
+    public new async Task<IEnumerable<Users>> ListAsync() => await _context.Users
+        .Include(x => x.Role)
+        .Include(x => x.Power)
+        .ToListAsync();
+    
     public int MaxId() => _context.Users.Max(x => x.Id);
 
     public async Task<Users> FindByName(string username) => 

@@ -4,7 +4,7 @@ using Back.Infrastructure.Context;
 
 namespace Back.Domain.Repositories;
 
-public class IncidentTypeRepository : CommonRepository<TypeIncident>, IIncidentTypeRepository
+public class IncidentTypeRepository : CommonRepository<IncidentType>, IIncidentTypeRepository
 {
     public IncidentTypeRepository(AppDbContext context) : base(context)
     {

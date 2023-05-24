@@ -10,12 +10,14 @@ public class UsersService : IUsersService
 {
     private readonly IUsersRepository _usersRepository;
     private readonly IRoleRepository _roleRepository;
+    private readonly IPowerRepository _powerRepository;
     private readonly IMapper _mapper;
     
-    public UsersService(IUsersRepository usersRepository, IRoleRepository roleRepository, IMapper mapper)
+    public UsersService(IUsersRepository usersRepository, IRoleRepository roleRepository, IPowerRepository powerRepository, IMapper mapper)
     {
         _usersRepository = usersRepository;
         _roleRepository = roleRepository;
+        _powerRepository = powerRepository;
         _mapper = mapper;
     }
     
@@ -30,7 +32,9 @@ public class UsersService : IUsersService
         users.Password = BCrypt.Net.BCrypt.HashPassword(users.Password, salt);
         var role = await _roleRepository.FindAsync(users.RoleId);
         if (role is null) throw new NotFoundException("Role incorrect !");
+        var power = await _powerRepository.FindAsync(users.PowerId ?? 0);
         users.Role = role;
+        users.Power = power;
         if (users.PowerId is 0) users.PowerId = null;
         var user = _mapper.Map<Users>(users);
         _usersRepository.Add(user);
@@ -44,8 +48,22 @@ public class UsersService : IUsersService
         if (user is null) throw new NotFoundException("Utilisateur introuvable !");
         var role = await _roleRepository.FindAsync(users.RoleId);
         if (role is null) throw new NotFoundException("Role incorrect !");
+        var power = await _powerRepository.FindAsync(users.PowerId ?? 0);
+        user.Username = users.Username;
+        user.Firstname = users.Firstname;
+        user.Lastname = users.Lastname;
+        user.Email = users.Email;
+        user.Phone = users.Phone;
+        var salt = BCrypt.Net.BCrypt.GenerateSalt();
+        user.Password = BCrypt.Net.BCrypt.HashPassword(users.Password, salt);
+        user.Longitude = users.Longitude;
+        user.Latitude = users.Latitude;
+        user.RoleId = users.RoleId;
+        user.Role = role;
+        user.PowerId = users.PowerId;
+        user.Power = power;
         if (user.PowerId is 0) user.PowerId = null;
-        user = _mapper.Map(users, user);
+        _usersRepository.Update(user);
         await _usersRepository.SaveChangesAsync();
         return user;
     }

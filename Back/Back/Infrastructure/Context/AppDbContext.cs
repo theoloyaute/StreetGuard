@@ -12,27 +12,36 @@ public partial class AppDbContext : DbContext
     {
     }
 
+    public virtual DbSet<IncidentType> IncidentType { get; set; }
+
     public virtual DbSet<Incidents> Incidents { get; set; }
 
     public virtual DbSet<Notification> Notification { get; set; }
 
     public virtual DbSet<Power> Power { get; set; }
 
-    public virtual DbSet<PowerTypeIncident> PowerTypeIncident { get; set; }
+    public virtual DbSet<PowerIncidentType> PowerIncidentType { get; set; }
 
     public virtual DbSet<Role> Role { get; set; }
-
-    public virtual DbSet<TypeIncident> TypeIncident { get; set; }
 
     public virtual DbSet<Users> Users { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<IncidentType>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("type_incident_pkey");
+
+            entity.Property(e => e.Id).HasDefaultValueSql("nextval('type_incident_id_seq'::regclass)");
+        });
+
         modelBuilder.Entity<Incidents>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("incidents_pkey");
-            
-            entity.HasOne(d => d.TypeIncident).WithMany(p => p.Incidents).HasConstraintName("incidents_type_incident_id_fkey");
+
+            entity.HasOne(d => d.TypeIncident).WithMany(p => p.Incidents)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("incidents_type_incident_id_fkey");
         });
 
         modelBuilder.Entity<Notification>(entity =>
@@ -47,7 +56,7 @@ public partial class AppDbContext : DbContext
             entity.HasKey(e => e.Id).HasName("power_pkey");
         });
 
-        modelBuilder.Entity<PowerTypeIncident>(entity =>
+        modelBuilder.Entity<PowerIncidentType>(entity =>
         {
             entity.HasOne(d => d.Power).WithMany()
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -61,11 +70,6 @@ public partial class AppDbContext : DbContext
         modelBuilder.Entity<Role>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("role_pkey");
-        });
-
-        modelBuilder.Entity<TypeIncident>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("type_incident_pkey");
         });
 
         modelBuilder.Entity<Users>(entity =>

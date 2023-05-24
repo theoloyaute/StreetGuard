@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore;
 namespace Back.Domain.Models;
 
 [Keyless]
-[Table("power_type_incident")]
-public partial class PowerTypeIncident
+[Table("power_incident_type")]
+public partial class PowerIncidentType
 {
     [Column("power_id")]
     public int PowerId { get; set; }
@@ -20,5 +20,5 @@ public partial class PowerTypeIncident
     public virtual Power Power { get; set; } = null!;
 
     [ForeignKey("TypeIncidentId")]
-    public virtual TypeIncident TypeIncident { get; set; } = null!;
+    public virtual IncidentType TypeIncident { get; set; } = null!;
 }

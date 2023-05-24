@@ -40,7 +40,12 @@ public class IncidentsService : IIncidentsService
         if (incident is null) throw new NotFoundException("Incident introuvable !");
         var type = await _incidentTypeRepository.FindAsync(incidents.TypeIncidentId);
         if (type is null) throw new NotFoundException("Type d'incident incorrect !");
-        incident = _mapper.Map(incidents, incident);
+        incident.Date = incidents.Date;
+        incident.Description = incidents.Description;
+        incident.Longitude = incidents.Longitude;
+        incident.Latitude = incidents.Latitude;
+        incident.TypeIncidentId = incidents.TypeIncidentId;
+        incident.TypeIncident = type;
         await _incidentsRepository.SaveChangesAsync();
         return incident;
     }
