@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, map, Observable} from "rxjs";
+import {JwtHelperService} from "@auth0/angular-jwt";
 
 @Injectable({
   providedIn: 'root'
@@ -10,9 +11,9 @@ export class AuthentificationService {
   protected componentUrl = this.baseUrl + '/Authentification';
   protected tokenSubject = new BehaviorSubject<string>('');
 
-
   constructor(
     protected http: HttpClient,
+    private jwtHelper: JwtHelperService
   ) { }
 
   login(username?: string, password?: string): Observable<any> {
@@ -35,8 +36,8 @@ export class AuthentificationService {
       );
   }
 
-  getToken(): string | null {
-    return localStorage.getItem('token');
+  getToken(): string {
+    return localStorage.getItem('token') || '';
   }
 
   isLoggedIn(): boolean {

@@ -1,6 +1,6 @@
 import {Injectable, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,10 @@ export class UsersService implements OnInit {
   ngOnInit(): void {
   }
 
-  getUsers(): Observable<any> {
-    const params: HttpParams = new HttpParams();
-    return this.http.get(this.componentUrl, {params})
+  getUser(id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+    });
+    return this.http.get(this.componentUrl + '/' + id, {headers});
   }
 }

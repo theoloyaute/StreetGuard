@@ -1,1 +1,32 @@
-<p>incidents works!</p>
+<app-navbar></app-navbar>
+
+<div class="container">
+
+  <div class="card" *ngFor="let incident of incidents">
+    <div class="card-content">
+      <h5>Description :</h5>
+      <span class="card-subtitle">{{ incident?.description }}</span>
+    </div>
+    <div class="card-content">
+      <h5>Date :</h5>
+      <span class="card-subtitle">{{ incident?.date.replaceAll('-', ' ') }}</span>
+    </div>
+    <div class="card-content">
+      <h5>Longitude :</h5>
+      <span class="card-subtitle">{{ incident?.longitude }}</span>
+    </div>
+    <div class="card-content">
+      <h5>Latitude :</h5>
+      <span class="card-subtitle">{{ incident?.latitude }}</span>
+    </div>
+    <div class="card-content">
+      <h5>Ville :</h5>
+      <span class="card-subtitle">{{ incident?.city?.name }}</span>
+    </div>
+    <div class="card-content">
+      <h5>Distance</h5>
+      <span class="card-subtitle">{{ distance }} Km</span>
+    </div>
+  </div>
+</div>
+

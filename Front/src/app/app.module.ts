@@ -12,15 +12,21 @@ import {DropdownModule} from "primeng/dropdown";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InputNumberModule} from "primeng/inputnumber";
 import {ButtonModule} from "primeng/button";
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { LoginComponent } from './views/login/login.component';
+import {NavbarComponent} from './components/navbar/navbar.component';
+import {LoginComponent} from './views/login/login.component';
+import {GoogleMapsModule} from "@angular/google-maps";
+import {MapComponent} from './views/map/map.component';
+import { IncidentsComponent } from './views/incidents/incidents.component';
+import {JwtModule} from "@auth0/angular-jwt";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    LoginComponent
+    LoginComponent,
+    MapComponent,
+    IncidentsComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +39,15 @@ import { LoginComponent } from './views/login/login.component';
     FormsModule,
     ReactiveFormsModule,
     InputNumberModule,
-    ButtonModule
+    ButtonModule,
+    GoogleMapsModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('token'),
+        allowedDomains: ['http://localhost:4200'],
+        disallowedRoutes: ['http://localhost:5113/api/Authentification'],
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

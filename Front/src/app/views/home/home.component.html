@@ -25,10 +25,16 @@
                        [maxFractionDigits]="5"></p-inputNumber>
         <label htmlFor="latitude">Latitude</label>
       </div>
+      <div class="p-float-label">
+        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Sélectionner"
+                    optionLabel="name"></p-dropdown>
+        <label htmlFor="city">Ville</label>
+      </div>
       <div class="card-button">
         <button pButton type="submit" (click)="add()">Valider</button>
       </div>
       <span class="p-error" *ngIf="errorMessage" [@fadeOut]="errorMessage">{{ errorMessage }}</span>
+      <span class="p-message-success" *ngIf="succesMessage" [@fadeOut]="succesMessage">{{ succesMessage }}</span>
     </div>
   </div>
 </div>
