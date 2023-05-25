@@ -6,17 +6,26 @@ import {Users} from "../../models/users";
 import {IncidentsService} from "../../services/incidents/incidents.service";
 import {Incidents} from "../../models/incidents";
 import {Router} from "@angular/router";
+import {animate, state, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-incidents',
   templateUrl: './incidents.component.html',
-  styleUrls: ['./incidents.component.css']
+  styleUrls: ['./incidents.component.css'],
+  animations: [
+    trigger('fadeOut', [
+      state('void', style({ opacity: 0 })),
+      transition(':enter', animate('0.5s ease-in-out')),
+      transition(':leave', animate('0.5s ease-in-out', style({ opacity: 0 })))
+    ])
+  ]
 })
 export class IncidentsComponent implements OnInit {
   user?: Users;
   incidents: Incidents[] = [];
   incident?: Incidents;
   distance?: number;
+  message?: string;
 
   userId?: number;
   userRole?: string;
@@ -75,5 +84,13 @@ export class IncidentsComponent implements OnInit {
     const distance = earthRadius * c;
 
     return Math.round(distance);
+  }
+
+  delete(id: number): void {
+    this.IncidentsService.deleteIncident(id).subscribe((response: any) => {
+      this.getIncidents();
+    });
+
+    this.message = "L'incident a bien été clos !";
   }
 }

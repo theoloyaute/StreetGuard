@@ -29,4 +29,11 @@ export class IncidentsService implements OnInit {
     });
     return this.http.get(this.componentUrl + '/find/' + powerId + '/' + longitude + '/' + latitude , {headers});
   }
+
+  deleteIncident(id: number): Observable<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
+    });
+    return this.http.delete(this.componentUrl + '/' + id, {headers});
+  }
 }

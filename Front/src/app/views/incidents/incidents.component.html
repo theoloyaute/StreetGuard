@@ -27,6 +27,10 @@
       <h5>Distance</h5>
       <span class="card-subtitle">{{ distance }} Km</span>
     </div>
+    <div class="card-button">
+      <button pButton (click)="delete(incident?.id!)">Fait</button>
+    </div>
   </div>
+  <span class="p-message" *ngIf="message" [@fadeOut]="message">{{ message }}</span>
 </div>
 
