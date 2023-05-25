@@ -55,7 +55,7 @@ public partial class Users
 
     [ForeignKey("RoleId")]
     [InverseProperty("Users")]
-    public virtual Role Role { get; set; } = null!;
+    public virtual Role? Role { get; set; }
 }
 
 public partial class Login

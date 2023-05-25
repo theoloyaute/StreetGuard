@@ -35,11 +35,14 @@ builder.Services.AddControllers();
 
 #region Scoped
 
+builder.Services.AddScoped<ICityRepository, CityRepository>();
+builder.Services.AddScoped<ICityService, CityService>();
 builder.Services.AddScoped<IIncidentsRepository, IncidentsRepository>();
 builder.Services.AddScoped<IIncidentsService, IncidentsService>();
 builder.Services.AddScoped<IIncidentTypeRepository, IncidentTypeRepository>();
 builder.Services.AddScoped<IIncidentTypeService, IncidentTypeService>();
 builder.Services.AddScoped<IPowerRepository, PowerRepository>();
+builder.Services.AddScoped<IPowerIncidentTypeRepository, PowerIncidentTypeRepository>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IUsersService, UsersService>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();

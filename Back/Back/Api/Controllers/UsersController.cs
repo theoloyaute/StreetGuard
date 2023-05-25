@@ -1,5 +1,6 @@
 using Back.Application.Services.Interfaces;
 using Back.Domain.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Back.Api.Controllers;
@@ -22,6 +23,7 @@ public class UsersController : ControllerBase
         return Ok(result);
     }
     
+    [Authorize]
     [HttpGet("{id:int}")]
     public async Task<IActionResult> Get(int id)
     {

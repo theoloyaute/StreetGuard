@@ -21,8 +21,8 @@ public class UsersRepository : CommonRepository<Users>, IUsersRepository
     
     public int MaxId() => _context.Users.Max(x => x.Id);
 
-    public async Task<Users> FindByName(string username) => 
-        (await _context.Users.Where(x => x.Username == username)
+    public async Task<Users?> FindByName(string username) => 
+        await _context.Users.Where(x => x.Username == username)
             .Include(x => x.Role)
-            .FirstOrDefaultAsync())!;
+            .FirstOrDefaultAsync();
 }

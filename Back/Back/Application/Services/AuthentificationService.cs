@@ -29,7 +29,8 @@ public class AuthentificationService : IAuthentificationService
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Role, user.Role?.Name!)
         };
-        
+        claims = claims.Where(x => x.Value != null).ToArray();
+
         var token = new JwtSecurityToken(_configuration["Jwt:Issuer"],
             _configuration["Jwt:Audience"],
             claims,

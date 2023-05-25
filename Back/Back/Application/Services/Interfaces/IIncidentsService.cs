@@ -9,4 +9,5 @@ public interface IIncidentsService
     Task<Incidents> Add(Incidents incidents);
     Task<Incidents> Update(Incidents incidents);
     void Delete(int id);
+    Task<List<Incidents>> FindIncidents(int powerId, double longitude, double latitude);
 }

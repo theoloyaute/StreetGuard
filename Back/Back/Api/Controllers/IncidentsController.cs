@@ -49,4 +49,11 @@ public class IncidentsController : ControllerBase
         _incidentsService.Delete(id);
         return Ok();
     }
+    
+    [HttpGet("find/{powerId:int}/{longitude:double}/{latitude:double}")]
+    public async Task<IActionResult> FindIncidents(int powerId, double longitude, double latitude)
+    {
+        var result = await _incidentsService.FindIncidents(powerId, longitude, latitude);
+        return Ok(result);
+    }
 }

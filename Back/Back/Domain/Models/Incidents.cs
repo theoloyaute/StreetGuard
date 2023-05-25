@@ -30,7 +30,7 @@ public partial class Incidents
     public int IncidentTypeId { get; set; }
 
     [Column("city_id")]
-    public int? CityId { get; set; }
+    public int CityId { get; set; }
 
     [ForeignKey("CityId")]
     [InverseProperty("Incidents")]
@@ -38,7 +38,7 @@ public partial class Incidents
 
     [ForeignKey("IncidentTypeId")]
     [InverseProperty("Incidents")]
-    public virtual IncidentType IncidentType { get; set; } = null!;
+    public virtual IncidentType? IncidentType { get; set; }
 
     [InverseProperty("Incidents")]
     public virtual ICollection<Notification> Notification { get; set; } = new List<Notification>();
