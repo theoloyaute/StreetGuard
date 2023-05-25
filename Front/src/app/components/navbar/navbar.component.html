@@ -2,7 +2,8 @@
   <div class="nav-wrapper">
     <a href="/" class="material-icons brand-logo">home</a>
     <div class="nav-button">
-      <button pButton>Je suis héro !</button>
+      <button pButton [routerLink]="['/login']" *ngIf="!isLoggedIn()">Je suis héro !</button>
+      <button pButton (click)="logout()" *ngIf="isLoggedIn()">Se déconnecter</button>
     </div>
   </div>
 <!--  <div class="nav-content">-->

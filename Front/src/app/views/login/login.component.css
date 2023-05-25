@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8rem 0;
+}
+
+.card {
+  padding: 5rem 4rem;
+  border-radius: 10px;
+}
+
+.card-title h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 0 0 3rem 0;
+}
+
+.card .p-float-label {
+  margin-top: 2rem;
+}
+
+.card .p-button {
+  margin-top: 1.5rem;
+  padding: 0;
+}

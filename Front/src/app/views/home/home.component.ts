@@ -48,8 +48,6 @@ export class HomeComponent implements OnInit {
       incidentTypeId: this.selectedType?.id
     }
 
-    console.log(incident);
-
     this.IncidentsService.addIncident(incident).subscribe(result => {
       this.router.navigate(['/']);
     }, (error: HttpErrorResponse) => {
@@ -58,8 +56,7 @@ export class HomeComponent implements OnInit {
       }
       if (error.status == 400) {
         this.errorMessage = "Il faut remplir tous les champs !";
-      }
-      setTimeout(() => {
+      } setTimeout(() => {
         this.errorMessage = "";
       }
         , 5000);

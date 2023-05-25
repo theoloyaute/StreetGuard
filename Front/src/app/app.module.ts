@@ -13,12 +13,14 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InputNumberModule} from "primeng/inputnumber";
 import {ButtonModule} from "primeng/button";
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './views/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
