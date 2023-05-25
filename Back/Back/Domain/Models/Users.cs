@@ -38,12 +38,10 @@ public partial class Users
     public string Password { get; set; } = null!;
 
     [Column("longitude")]
-    [Precision(9, 6)]
-    public decimal? Longitude { get; set; }
+    public double? Longitude { get; set; }
 
     [Column("latitude")]
-    [Precision(9, 6)]
-    public decimal? Latitude { get; set; }
+    public double? Latitude { get; set; }
 
     [Column("role_id")]
     public int RoleId { get; set; }
@@ -57,11 +55,16 @@ public partial class Users
 
     [ForeignKey("RoleId")]
     [InverseProperty("Users")]
-    public virtual Role? Role { get; set; }
+    public virtual Role Role { get; set; } = null!;
 }
 
 public partial class Login
 {
+    [Column("username")]
+    [StringLength(255)]
     public string Username { get; set; }
+
+    [Column("password")]
+    [StringLength(255)]
     public string Password { get; set; }
 }

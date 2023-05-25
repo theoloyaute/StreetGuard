@@ -6,8 +6,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Back.Domain.Models;
 
-[Table("incident_type")]
-public partial class IncidentType
+[Table("city")]
+public partial class City
 {
     [Key]
     [Column("id")]
@@ -17,6 +17,12 @@ public partial class IncidentType
     [StringLength(255)]
     public string Name { get; set; } = null!;
 
-    [InverseProperty("IncidentType")]
+    [Column("longitude")]
+    public double Longitude { get; set; }
+
+    [Column("latitude")]
+    public double Latitude { get; set; }
+
+    [InverseProperty("City")]
     public virtual ICollection<Incidents> Incidents { get; set; } = new List<Incidents>();
 }

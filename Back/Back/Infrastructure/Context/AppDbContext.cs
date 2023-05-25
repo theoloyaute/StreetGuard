@@ -12,6 +12,8 @@ public partial class AppDbContext : DbContext
     {
     }
 
+    public virtual DbSet<City> City { get; set; }
+
     public virtual DbSet<IncidentType> IncidentType { get; set; }
 
     public virtual DbSet<Incidents> Incidents { get; set; }
@@ -28,6 +30,13 @@ public partial class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<City>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("city_pkey");
+
+            entity.Property(e => e.Id).HasDefaultValueSql("nextval('power_id_seq'::regclass)");
+        });
+
         modelBuilder.Entity<IncidentType>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("type_incident_pkey");
@@ -39,9 +48,11 @@ public partial class AppDbContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("incidents_pkey");
 
-            entity.HasOne(d => d.TypeIncident).WithMany(p => p.Incidents)
+            entity.HasOne(d => d.City).WithMany(p => p.Incidents).HasConstraintName("incidents_city_id_fkey");
+
+            entity.HasOne(d => d.IncidentType).WithMany(p => p.Incidents)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("incidents_type_incident_id_fkey");
+                .HasConstraintName("incidents_incident_type_id_fkey");
         });
 
         modelBuilder.Entity<Notification>(entity =>
@@ -58,13 +69,13 @@ public partial class AppDbContext : DbContext
 
         modelBuilder.Entity<PowerIncidentType>(entity =>
         {
+            entity.HasOne(d => d.IncidentType).WithMany()
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("power_type_incident_type_incident_id_fkey");
+
             entity.HasOne(d => d.Power).WithMany()
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("power_type_incident_power_id_fkey");
-
-            entity.HasOne(d => d.TypeIncident).WithMany()
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("power_type_incident_type_incident_id_fkey");
         });
 
         modelBuilder.Entity<Role>(entity =>

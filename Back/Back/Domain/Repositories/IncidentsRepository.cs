@@ -15,11 +15,11 @@ public class IncidentsRepository : CommonRepository<Incidents>, IIncidentsReposi
     }
     
     public new async Task<IEnumerable<Incidents>> ListAsync() => await _context.Incidents
-        .Include(x => x.TypeIncident)
+        .Include(x => x.IncidentType)
         .ToListAsync();
     
     public new async Task<Incidents?> FindAsync(int id) => await _context.Incidents
-        .Include(x => x.TypeIncident)
+        .Include(x => x.IncidentType)
         .FirstOrDefaultAsync(x => x.Id == id);
 
     public int MaxId() => _context.Incidents.Max(x => x.Id);

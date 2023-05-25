@@ -13,12 +13,12 @@ public partial class PowerIncidentType
     [Column("power_id")]
     public int PowerId { get; set; }
 
-    [Column("type_incident_id")]
-    public int TypeIncidentId { get; set; }
+    [Column("incident_type_id")]
+    public int IncidentTypeId { get; set; }
+
+    [ForeignKey("IncidentTypeId")]
+    public virtual IncidentType IncidentType { get; set; } = null!;
 
     [ForeignKey("PowerId")]
     public virtual Power Power { get; set; } = null!;
-
-    [ForeignKey("TypeIncidentId")]
-    public virtual IncidentType TypeIncident { get; set; } = null!;
 }

@@ -21,20 +21,25 @@ public partial class Incidents
     public string Description { get; set; } = null!;
 
     [Column("longitude")]
-    [Precision(9, 6)]
-    public decimal Longitude { get; set; }
+    public double Longitude { get; set; }
 
     [Column("latitude")]
-    [Precision(9, 6)]
-    public decimal Latitude { get; set; }
+    public double Latitude { get; set; }
 
-    [Column("type_incident_id")]
-    public int TypeIncidentId { get; set; }
+    [Column("incident_type_id")]
+    public int IncidentTypeId { get; set; }
+
+    [Column("city_id")]
+    public int? CityId { get; set; }
+
+    [ForeignKey("CityId")]
+    [InverseProperty("Incidents")]
+    public virtual City? City { get; set; }
+
+    [ForeignKey("IncidentTypeId")]
+    [InverseProperty("Incidents")]
+    public virtual IncidentType IncidentType { get; set; } = null!;
 
     [InverseProperty("Incidents")]
     public virtual ICollection<Notification> Notification { get; set; } = new List<Notification>();
-
-    [ForeignKey("TypeIncidentId")]
-    [InverseProperty("Incidents")]
-    public virtual IncidentType? TypeIncident { get; set; } = null!;
 }

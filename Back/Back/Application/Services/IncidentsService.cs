@@ -26,9 +26,10 @@ public class IncidentsService : IIncidentsService
     public async Task<Incidents> Add(Incidents incidents)
     {
         incidents.Id = _incidentsRepository.MaxId() + 1;
-        var type = await _incidentTypeRepository.FindAsync(incidents.TypeIncidentId);
+        var type = await _incidentTypeRepository.FindAsync(incidents.IncidentTypeId);
         if (type is null) throw new NotFoundException("Type d'incident incorrect !");
-        incidents.TypeIncident = type;
+        incidents.Date = DateOnly.FromDateTime(DateTime.Now);
+        incidents.IncidentType = type;
         var incident = _mapper.Map<Incidents>(incidents);
         _incidentsRepository.Add(incident);
         await _incidentsRepository.SaveChangesAsync();
@@ -39,14 +40,14 @@ public class IncidentsService : IIncidentsService
     {
         var incident = await _incidentsRepository.FindAsync(incidents.Id);
         if (incident is null) throw new NotFoundException("Incident introuvable !");
-        var type = await _incidentTypeRepository.FindAsync(incidents.TypeIncidentId);
+        var type = await _incidentTypeRepository.FindAsync(incidents.IncidentTypeId);
         if (type is null) throw new NotFoundException("Type d'incident incorrect !");
         incident.Date = incidents.Date;
         incident.Description = incidents.Description;
         incident.Longitude = incidents.Longitude;
         incident.Latitude = incidents.Latitude;
-        incident.TypeIncidentId = incidents.TypeIncidentId;
-        incident.TypeIncident = type;
+        incident.IncidentTypeId = incidents.IncidentTypeId;
+        incident.IncidentType = type;
         _incidentsRepository.Update(incident);
         await _incidentsRepository.SaveChangesAsync();
         return incident;
