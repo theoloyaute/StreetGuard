@@ -8,6 +8,24 @@
 .card {
   padding: 5rem 4rem;
   border-radius: 10px;
+  display: flex;
+}
+
+@media screen and (max-width: 673px) {
+  .card {
+    padding: 3rem 2rem;
+    display: block;
+  }
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-divider {
+  margin: 0 2rem;
 }
 
 .card-title h1 {

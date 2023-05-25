@@ -33,8 +33,8 @@
       <div class="card-button">
         <button pButton type="submit" (click)="add()">Valider</button>
       </div>
-      <span class="p-error" *ngIf="errorMessage" [@fadeOut]="errorMessage">{{ errorMessage }}</span>
-      <span class="p-message-success" *ngIf="succesMessage" [@fadeOut]="succesMessage">{{ succesMessage }}</span>
     </div>
   </div>
+  <span class="p-error" *ngIf="errorMessage" [@fadeOut]="errorMessage">{{ errorMessage }}</span>
+  <span class="p-success" *ngIf="succesMessage" [@fadeOut]="succesMessage">{{ succesMessage }}</span>
 </div>

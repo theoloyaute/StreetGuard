@@ -18,6 +18,7 @@ import {GoogleMapsModule} from "@angular/google-maps";
 import {MapComponent} from './views/map/map.component';
 import { IncidentsComponent } from './views/incidents/incidents.component';
 import {JwtModule} from "@auth0/angular-jwt";
+import {DividerModule} from "primeng/divider";
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import {JwtModule} from "@auth0/angular-jwt";
         disallowedRoutes: ['http://localhost:5113/api/Authentification'],
       },
     }),
+    DividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -4,7 +4,7 @@
   justify-content: center;
   border-radius: 5px;
   width: 100%;
-  margin: 8rem 0;
+  margin: 8rem 0 0 0;
 }
 
 .card .card-content {
@@ -34,10 +34,16 @@
   margin-right: 8rem;
 }
 
-.card .card-content .p-error {
-  margin: 1rem 0;
+.p-error .p-success {
+  margin: 0.5rem 0 0 0.5rem;
 }
 
-.card .card-content .p-error {
-  margin: 1rem 0;
+.p-error {
+  color: #cc0000;
+  font-size: 1rem;
+}
+
+.p-success {
+  color: #007e33;
+  font-size: 1rem;
 }

@@ -2,8 +2,8 @@
 
 <div class="container">
   <div class="grid">
-    <div class="col-5 flex align-items-center justify-content-center">
-      <div class="p-fluid card">
+    <div class="card p-fluid">
+      <div>
         <div class="card-title">
           <h1 class="text-center">En avant super-héro</h1>
         </div>
@@ -15,9 +15,17 @@
           <input pInputText [(ngModel)]="password" id="password" type="password"/>
           <label htmlFor="password">Password</label>
         </div>
-        <p-button class="p-button" label="Login" (click)="login()"></p-button>
+        <p-button class="p-button" label="Me connecter" (click)="login()"></p-button>
       </div>
-      <span class="p-error" *ngIf="errorMessage" [@fadeOut]="errorMessage">{{ errorMessage }}</span>
+      <div class="card-divider">
+        <p-divider layout="vertical">
+          <b>OR</b>
+        </p-divider>
+      </div>
+      <div class="card-container">
+        <p-button label="Rejoindre" icon="pi pi-user-plus" styleClass="p-button-success"></p-button>
+      </div>
     </div>
+    <span class="p-error" *ngIf="errorMessage" [@fadeOut]="errorMessage">{{ errorMessage }}</span>
   </div>
 </div>
