@@ -2,7 +2,7 @@ import {IncidentType} from "./incidentType";
 
 export interface Incidents {
   id?: number;
-  date?: Date;
+  date?: any;
   description?: string;
   longitude?: number;
   latitude?: number;

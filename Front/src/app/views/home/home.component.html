@@ -1,3 +1,34 @@
-<div>
-Ca marche
+<app-navbar></app-navbar>
+
+<div class="container">
+  <div class="card">
+    <div class="card-content">
+      <div class="card-title">
+        <h1>Que ce passe-t-il ?</h1>
+      </div>
+      <div class="p-float-label">
+        <p-dropdown [options]="incidentTypes" [(ngModel)]="selectedType" placeholder="Sélectionner"
+                    optionLabel="name"></p-dropdown>
+        <label htmlFor="incidentType">Type d'incident</label>
+      </div>
+      <div class="p-float-label">
+        <textarea pInputTextarea [(ngModel)]="description" rows="5" cols="30"></textarea>
+        <label htmlFor="description">Description</label>
+      </div>
+      <div class="p-float-label">
+        <p-inputNumber [(ngModel)]="longitude" inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2"
+                       [maxFractionDigits]="5"></p-inputNumber>
+        <label htmlFor="longitude">Longitude</label>
+      </div>
+      <div class="p-float-label">
+        <p-inputNumber [(ngModel)]="latitude" inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2"
+                       [maxFractionDigits]="5"></p-inputNumber>
+        <label htmlFor="latitude">Latitude</label>
+      </div>
+      <div class="card-button">
+        <button pButton type="submit" (click)="add()">Valider</button>
+      </div>
+      <span class="p-error" *ngIf="errorMessage" [@fadeOut]="errorMessage">{{ errorMessage }}</span>
+    </div>
+  </div>
 </div>

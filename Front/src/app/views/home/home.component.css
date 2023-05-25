@@ -1,3 +1,43 @@
-.object td {
-  text-align: center;
+.card {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 5px;
+  width: 100%;
+  margin: 8rem 0;
+}
+
+.card .card-content {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card .card-content .card-title h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.card .card-content .p-float-label {
+  margin-top: 2rem;
+}
+
+.card .card-content .card-button {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.card .card-content .card-button button {
+  margin-right: 8rem;
+}
+
+.card .card-content .p-error {
+  margin: 1rem 0;
+}
+
+.card .card-content .p-error {
+  margin: 1rem 0;
 }
