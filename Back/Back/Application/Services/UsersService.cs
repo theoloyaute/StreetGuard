@@ -31,7 +31,6 @@ public class UsersService : IUsersService
         var salt = BCrypt.Net.BCrypt.GenerateSalt();
         users.Password = BCrypt.Net.BCrypt.HashPassword(users.Password, salt);
         var role = await _roleRepository.FindAsync(users.RoleId);
-        if (role is null) throw new NotFoundException("Role incorrect !");
         var power = await _powerRepository.FindAsync(users.PowerId ?? 0);
         users.Role = role;
         users.Power = power;

@@ -44,7 +44,7 @@ public partial class Users
     public double? Latitude { get; set; }
 
     [Column("role_id")]
-    public int RoleId { get; set; }
+    public int RoleId { get; set; } = 1;
 
     [Column("power_id")]
     public int? PowerId { get; set; }

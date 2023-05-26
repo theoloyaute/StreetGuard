@@ -42,6 +42,7 @@ builder.Services.AddScoped<IIncidentsService, IncidentsService>();
 builder.Services.AddScoped<IIncidentTypeRepository, IncidentTypeRepository>();
 builder.Services.AddScoped<IIncidentTypeService, IncidentTypeService>();
 builder.Services.AddScoped<IPowerRepository, PowerRepository>();
+builder.Services.AddScoped<IPowerService, PowerService>();
 builder.Services.AddScoped<IPowerIncidentTypeRepository, PowerIncidentTypeRepository>();
 builder.Services.AddScoped<IUsersRepository, UsersRepository>();
 builder.Services.AddScoped<IUsersService, UsersService>();
