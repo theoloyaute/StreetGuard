@@ -23,7 +23,7 @@
         </p-divider>
       </div>
       <div class="card-container">
-        <p-button label="Rejoindre" icon="pi pi-user-plus" styleClass="p-button-success"></p-button>
+        <p-button label="Rejoindre" icon="pi pi-user-plus" styleClass="p-button-success" [routerLink]="['/users']"></p-button>
       </div>
     </div>
     <span class="p-error" *ngIf="errorMessage" [@fadeOut]="errorMessage">{{ errorMessage }}</span>

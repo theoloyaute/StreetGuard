@@ -1,1 +1,64 @@
-<p>users works!</p>
+<app-navbar></app-navbar>
+
+<div class="container">
+
+  <div class="grid">
+    <div class="card p-fluid">
+      <div class="card-title">
+        <h1 class="text-center">Futur super-héro ?</h1>
+      </div>
+      <div class="card-container">
+        <div class="card-content">
+          <div class="p-float-label">
+            <input pInputText [(ngModel)]="username" id="username" type="text"/>
+            <label htmlFor="username">Pseudo</label>
+          </div>
+          <div class="p-float-label">
+            <input pInputText [(ngModel)]="firstname" id="firstname" type="text"/>
+            <label htmlFor="firstname">Prénom</label>
+          </div>
+          <div class="p-float-label">
+            <input pInputText [(ngModel)]="lastname" id="lastname" type="text"/>
+            <label htmlFor="lastname">Nom</label>
+          </div>
+          <div class="p-float-label">
+            <input pInputText [(ngModel)]="email" id="email" type="email"/>
+            <label htmlFor="email">Email</label>
+          </div>
+          <div class="p-float-label">
+            <input pInputText [(ngModel)]="phone" id="phone" type="tel"/>
+            <label htmlFor="phone">Téléphone</label>
+          </div>
+        </div>
+        <div class="card-content">
+          <div class="p-float-label">
+            <p-dropdown [options]="powers" [(ngModel)]="selectedPower" placeholder="Choisi"
+                        optionLabel="name"></p-dropdown>
+            <label htmlFor="city">Pouvoir</label>
+          </div>
+          <div class="p-float-label">
+            <input pInputText [(ngModel)]="password" id="password" type="password"/>
+            <label htmlFor="password">Password</label>
+          </div>
+          <div class="p-float-label">
+            <input pInputText [(ngModel)]="passwordConfirm" id="passwordConfirm" type="password"/>
+            <label htmlFor="passwordConfirm">Confirmation du password</label>
+          </div>
+          <div class="p-float-label">
+            <p-inputNumber [(ngModel)]="longitude" inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2"
+                           [maxFractionDigits]="9"></p-inputNumber>
+            <label htmlFor="longitude">Longitude</label>
+          </div>
+          <div class="p-float-label">
+            <p-inputNumber [(ngModel)]="latitude" inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2"
+                           [maxFractionDigits]="9"></p-inputNumber>
+            <label htmlFor="latitude">Latitude</label>
+          </div>
+        </div>
+      </div>
+      <p-button class="p-button" label="Rejoindre" (click)="create()"></p-button>
+    </div>
+    <span class="p-error" *ngIf="errorMessage" [@fadeOut]="errorMessage">{{ errorMessage }}</span>
+    <span class="p-success" *ngIf="succesMessage" [@fadeOut]="succesMessage">{{ succesMessage }}</span>
+  </div>
+</div>
