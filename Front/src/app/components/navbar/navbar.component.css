@@ -1,15 +1,28 @@
+.nav-extended {
+  background-color: rgba(60, 129, 246);
+}
+
 .nav-wrapper {
   display: flex;
   justify-content: space-between;
 }
 
 .nav-wrapper .brand-logo {
+  background-color: rgba(60, 129, 246);
   position: relative;
+  border-radius: 6px;
   font-size: 3.5rem;
   margin-left: 3rem;
   height: 5rem;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
+  transition: background-color 0.2s;
+}
+
+.nav-wrapper .brand-logo:hover {
+  background-color: rgba(36, 99, 235);
+  transition: background-color 0.2s;
 }
 
 @media only screen and (max-width: 992px) {
@@ -26,4 +39,21 @@
 
 .nav-wrapper .nav-button button{
   height: 5rem;
+}
+
+.nav-content .tabs {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-content .tab {
+  background-color: rgba(60, 129, 246);
+  border-radius: 6px;
+  margin: 0 1rem;
+  transition: background-color 0.2s;
+}
+
+.nav-content .tab:hover {
+  background-color: rgba(36, 99, 235);
+  transition: background-color 0.2s;
 }
