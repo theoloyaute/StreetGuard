@@ -11,9 +11,9 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   styleUrls: ['./login.component.css'],
   animations: [
     trigger('fadeOut', [
-      state('void', style({ opacity: 0 })),
+      state('void', style({opacity: 0})),
       transition(':enter', animate('0.5s ease-in-out')),
-      transition(':leave', animate('0.5s ease-in-out', style({ opacity: 0 })))
+      transition(':leave', animate('0.5s ease-in-out', style({opacity: 0})))
     ])
   ]
 })
@@ -40,7 +40,8 @@ export class LoginComponent implements OnInit {
     }, (error: HttpErrorResponse) => {
       if (error.status == 400) {
         this.errorMessage = "Username ou mot de passe incorrect !";
-      } setTimeout(() => {
+      }
+      setTimeout(() => {
           this.errorMessage = "";
         }
         , 5000);

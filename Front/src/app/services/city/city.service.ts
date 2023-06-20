@@ -11,7 +11,8 @@ export class CityService implements OnInit {
 
   constructor(
     protected http: HttpClient,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }

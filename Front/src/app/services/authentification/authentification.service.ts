@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BehaviorSubject, map, Observable} from "rxjs";
 import {JwtHelperService} from "@auth0/angular-jwt";
@@ -14,7 +14,8 @@ export class AuthentificationService {
   constructor(
     protected http: HttpClient,
     private jwtHelper: JwtHelperService
-  ) { }
+  ) {
+  }
 
   login(username?: string, password?: string): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'application/json').set('Authorization', 'Bearer ' + this.getToken());

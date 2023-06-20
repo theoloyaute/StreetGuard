@@ -10,7 +10,8 @@ export class PowerService implements OnInit {
 
   constructor(
     protected http: HttpClient
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }

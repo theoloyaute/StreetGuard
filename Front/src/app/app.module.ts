@@ -15,7 +15,6 @@ import {ButtonModule} from "primeng/button";
 import {NavbarComponent} from './components/navbar/navbar.component';
 import {LoginComponent} from './views/login/login.component';
 import {GoogleMapsModule} from "@angular/google-maps";
-import {MapComponent} from './views/map/map.component';
 import {IncidentsComponent} from './views/incidents/incidents.component';
 import {JwtModule} from "@auth0/angular-jwt";
 import {DividerModule} from "primeng/divider";
@@ -27,7 +26,6 @@ import {UsersComponent} from './views/users/users.component';
     HomeComponent,
     NavbarComponent,
     LoginComponent,
-    MapComponent,
     IncidentsComponent,
     UsersComponent
   ],

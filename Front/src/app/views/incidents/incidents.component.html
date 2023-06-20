@@ -1,36 +1,48 @@
 <app-navbar></app-navbar>
 
 <div class="container">
+  <div class="card">
 
-  <div class="card" *ngFor="let incident of incidents">
-    <div class="card-content">
-      <h5>Description :</h5>
-      <span class="card-subtitle">{{ incident?.description }}</span>
-    </div>
-    <div class="card-content">
-      <h5>Date :</h5>
-      <span class="card-subtitle">{{ incident?.date.replaceAll('-', ' ') }}</span>
-    </div>
-    <div class="card-content">
-      <h5>Longitude :</h5>
-      <span class="card-subtitle">{{ incident?.longitude }}</span>
-    </div>
-    <div class="card-content">
-      <h5>Latitude :</h5>
-      <span class="card-subtitle">{{ incident?.latitude }}</span>
-    </div>
-    <div class="card-content">
-      <h5>Ville :</h5>
-      <span class="card-subtitle">{{ incident?.city?.name }}</span>
-    </div>
-    <div class="card-content">
-      <h5>Distance</h5>
-      <span class="card-subtitle">{{ distance }} Km</span>
-    </div>
-    <div class="card-button">
-      <button pButton (click)="delete(incident?.id!)">Fait</button>
-    </div>
+    <google-map height="100%" width="100%" [center]="center" [zoom]="11" (mapClick)="click($event)">
+      <map-marker
+        #marker="mapMarker"
+        *ngFor="let m of markers"
+        [position]="m.position"
+        [label]="m.label"
+        [options]="m.options"
+        (mapClick)="openInfo(marker, infoWindow, m.info)">
+      </map-marker>
+      <map-info-window #infoWindow="mapInfoWindow">
+        <div>
+          <div class="card-content">
+            <h5>Description :</h5>
+            <span class="card-subtitle">{{ infoContent?.description }}</span>
+          </div>
+          <div class="card-content">
+            <h5>Date :</h5>
+            <span class="card-subtitle">{{ infoContent?.date.replaceAll('-', ' ') }}</span>
+          </div>
+          <div class="card-content">
+            <h5>Ville :</h5>
+            <span class="card-subtitle">{{ infoContent?.cityName }}</span>
+          </div>
+          <div class="card-content">
+            <h5>Type d'incident :</h5>
+            <span class="card-subtitle">{{ infoContent?.incidentTypeName }}</span>
+          </div>
+          <div class="card-content">
+            <h5>Distance :</h5>
+            <span class="card-subtitle">{{ infoContent?.distance }}</span>
+          </div>
+          <div class="card-button">
+            <button pButton (click)="delete(incident?.id!)">Fait</button>
+          </div>
+        </div>
+      </map-info-window>
+      <span class="card-title card-position" *ngIf="messageMarker" [@fadeOut]="messageMarker">{{ messageMarker }}</span>
+    </google-map>
+
   </div>
-  <span class="p-message" *ngIf="message" [@fadeOut]="message">{{ message }}</span>
+  <span class="p-success" *ngIf="message" [@fadeOut]="message">{{ message }}</span>
 </div>
 

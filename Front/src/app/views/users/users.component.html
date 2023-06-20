@@ -11,7 +11,7 @@
         <div class="card-content">
           <div class="p-float-label">
             <input pInputText [(ngModel)]="username" id="username" type="text"/>
-            <label htmlFor="username">Pseudo</label>
+            <label htmlFor="username">Pseudo *</label>
           </div>
           <div class="p-float-label">
             <input pInputText [(ngModel)]="firstname" id="firstname" type="text"/>
@@ -23,36 +23,36 @@
           </div>
           <div class="p-float-label">
             <input pInputText [(ngModel)]="email" id="email" type="email"/>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email *</label>
           </div>
           <div class="p-float-label">
             <input pInputText [(ngModel)]="phone" id="phone" type="tel"/>
-            <label htmlFor="phone">Téléphone</label>
+            <label htmlFor="phone">Téléphone *</label>
           </div>
         </div>
         <div class="card-content">
           <div class="p-float-label">
             <p-dropdown [options]="powers" [(ngModel)]="selectedPower" placeholder="Choisi"
                         optionLabel="name"></p-dropdown>
-            <label htmlFor="city">Pouvoir</label>
+            <label htmlFor="city">Pouvoir *</label>
           </div>
           <div class="p-float-label">
             <input pInputText [(ngModel)]="password" id="password" type="password"/>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password *</label>
           </div>
           <div class="p-float-label">
             <input pInputText [(ngModel)]="passwordConfirm" id="passwordConfirm" type="password"/>
-            <label htmlFor="passwordConfirm">Confirmation du password</label>
+            <label htmlFor="passwordConfirm">Confirmation du password *</label>
           </div>
           <div class="p-float-label">
             <p-inputNumber [(ngModel)]="longitude" inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2"
                            [maxFractionDigits]="9"></p-inputNumber>
-            <label htmlFor="longitude">Longitude</label>
+            <label htmlFor="longitude">Longitude *</label>
           </div>
           <div class="p-float-label">
             <p-inputNumber [(ngModel)]="latitude" inputId="minmaxfraction" mode="decimal" [minFractionDigits]="2"
                            [maxFractionDigits]="9"></p-inputNumber>
-            <label htmlFor="latitude">Latitude</label>
+            <label htmlFor="latitude">Latitude *</label>
           </div>
         </div>
       </div>

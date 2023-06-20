@@ -11,9 +11,9 @@ import {HttpErrorResponse} from "@angular/common/http";
   styleUrls: ['./users.component.css'],
   animations: [
     trigger('fadeOut', [
-      state('void', style({ opacity: 0 })),
+      state('void', style({opacity: 0})),
       transition(':enter', animate('0.5s ease-in-out')),
-      transition(':leave', animate('0.5s ease-in-out', style({ opacity: 0 })))
+      transition(':leave', animate('0.5s ease-in-out', style({opacity: 0})))
     ])
   ]
 })
@@ -37,7 +37,8 @@ export class UsersComponent implements OnInit {
   constructor(
     private PowerService: PowerService,
     private UsersService: UsersService,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.PowerService.getPowers().subscribe((powers: Power[]) => {
@@ -46,17 +47,36 @@ export class UsersComponent implements OnInit {
   }
 
   create() {
+    if (this.username == undefined || this.email == undefined || this.phone == undefined || this.password == undefined || this.passwordConfirm == undefined || this.longitude == undefined || this.latitude == undefined || this.username == '' || this.email == '' || this.phone == '' || this.password == '' || this.passwordConfirm == '' || this.longitude == 0 || this.latitude == 0 || this.selectedPower == null) {
+      this.errorMessage = "Il faut remplir tous les champs obligatoires (*) !";
+      setTimeout(() => {
+        this.errorMessage = "";
+      }, 5000);
+      return;
+    }
+
+    if (this.password != this.passwordConfirm) {
+      this.errorMessage = "Les mots de passe doivent être identique !";
+      setTimeout(() => {
+        this.errorMessage = "";
+      }, 5000);
+      return;
+    }
+
     const user = {
       username: this.username,
       firstname: this.firstname,
       lastname: this.lastname,
       email: this.email,
       phone: this.phone,
-      password: this.password === this.passwordConfirm ? this.password : this.errorMessage = "Les mots de passe doivent être identique !",
+      password: this.password,
       longitude: this.longitude,
       latitude: this.latitude,
       powerId: this.selectedPower?.id
     };
+    setTimeout(() => {
+      this.errorMessage = "";
+    }, 5000);
 
     this.UsersService.createUser(user).subscribe((response: any) => {
       this.succesMessage = 'Utilisateur créé avec succès !';
@@ -67,15 +87,9 @@ export class UsersComponent implements OnInit {
       if (error.status == 404) {
         this.errorMessage = "Erreur de création !";
       }
-      if (error.status == 400) {
-        this.errorMessage = "Il faut remplir tous les champs !";
-      }
-      if (error.status == 500 && this.errorMessage == undefined) {
-        this.errorMessage = "Il faut remplir tous les champs !";
-      }
       setTimeout(() => {
-          this.errorMessage = "";
-        }, 5000);
+        this.errorMessage = "";
+      }, 5000);
     });
 
     this.username = '';

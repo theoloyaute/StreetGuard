@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { IncidentTypeService } from './incident-type.service';
+import {IncidentTypeService} from './incident-type.service';
 
 describe('IncidentTypeService', () => {
   let service: IncidentTypeService;

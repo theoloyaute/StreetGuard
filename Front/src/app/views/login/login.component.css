@@ -42,3 +42,9 @@
   margin-top: 1.5rem;
   padding: 0;
 }
+
+.p-error {
+  color: #cc0000;
+  font-size: 1rem;
+  margin: 0.5rem 0 0 0.5rem;
+}

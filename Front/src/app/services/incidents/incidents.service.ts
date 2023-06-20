@@ -27,7 +27,7 @@ export class IncidentsService implements OnInit {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json', 'Authorization': 'Bearer ' + localStorage.getItem('token')
     });
-    return this.http.get(this.componentUrl + '/find/' + powerId + '/' + longitude + '/' + latitude , {headers});
+    return this.http.get(this.componentUrl + '/find/' + powerId + '/' + longitude + '/' + latitude, {headers});
   }
 
   deleteIncident(id: number): Observable<any> {

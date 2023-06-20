@@ -13,7 +13,8 @@ export class UsersService implements OnInit {
 
   constructor(
     protected http: HttpClient
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }

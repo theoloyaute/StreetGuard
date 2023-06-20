@@ -16,9 +16,9 @@ import {JwtHelperService} from "@auth0/angular-jwt";
   styleUrls: ['./home.component.css'],
   animations: [
     trigger('fadeOut', [
-      state('void', style({ opacity: 0 })),
+      state('void', style({opacity: 0})),
       transition(':enter', animate('0.5s ease-in-out')),
-      transition(':leave', animate('0.5s ease-in-out', style({ opacity: 0 })))
+      transition(':leave', animate('0.5s ease-in-out', style({opacity: 0})))
     ])
   ]
 })
@@ -82,9 +82,10 @@ export class HomeComponent implements OnInit {
       }
       if (error.status == 500) {
         this.errorMessage = "Il faut remplir tous les champs !";
-      } setTimeout(() => {
-        this.errorMessage = "";
       }
+      setTimeout(() => {
+          this.errorMessage = "";
+        }
         , 5000);
     });
 

@@ -1,12 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AuthentificationService} from "../../services/authentification/authentification.service";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {UsersService} from "../../services/users/users.service";
 import {Users} from "../../models/users";
 import {IncidentsService} from "../../services/incidents/incidents.service";
-import {Incidents} from "../../models/incidents";
+import {Incidents, IncidentView} from "../../models/incidents";
 import {Router} from "@angular/router";
 import {animate, state, style, transition, trigger} from "@angular/animations";
+import {MapInfoWindow, MapMarker} from "@angular/google-maps";
 
 @Component({
   selector: 'app-incidents',
@@ -14,9 +15,9 @@ import {animate, state, style, transition, trigger} from "@angular/animations";
   styleUrls: ['./incidents.component.css'],
   animations: [
     trigger('fadeOut', [
-      state('void', style({ opacity: 0 })),
+      state('void', style({opacity: 0})),
       transition(':enter', animate('0.5s ease-in-out')),
-      transition(':leave', animate('0.5s ease-in-out', style({ opacity: 0 })))
+      transition(':leave', animate('0.5s ease-in-out', style({opacity: 0})))
     ])
   ]
 })
@@ -26,6 +27,9 @@ export class IncidentsComponent implements OnInit {
   incident?: Incidents;
   distance?: number;
   message?: string;
+  center?: any;
+  markers?: any[] = [];
+  messageMarker?: string;
 
   userId?: number;
   userRole?: string;
@@ -60,8 +64,36 @@ export class IncidentsComponent implements OnInit {
   getIncidents(): void {
     this.IncidentsService.getIncidents(this.user?.powerId, this.user?.longitude, this.user?.latitude).subscribe((incidents: Incidents[]) => {
       this.incidents = incidents;
+      if (this.incidents.length == 0) {
+        this.messageMarker = "Aucun incident à signaler";
+      }
+      console.log(this.incidents);
       this.incidents.forEach((incident: Incidents) => {
         this.distance = this.calculateDistance(this.user!.longitude!, this.user!.latitude!, incident.longitude!, incident.latitude!);
+        this.center = {
+          lat: this.user!.latitude,
+          lng: this.user!.longitude,
+        };
+      })
+      this.markers = this.incidents.map((incident: Incidents) => {
+        return {
+          info: {
+            id: incident.id,
+            date: incident.date,
+            description: incident.description,
+            cityName: incident.city?.name,
+            incidentTypeName: incident.incidentType?.name,
+            distance: this.calculateDistance(this.user!.longitude!, this.user!.latitude!, incident.longitude!, incident.latitude!),
+          },
+          position: {
+            lat: incident.latitude,
+            lng: incident.longitude,
+          },
+          label: {
+            color: 'red',
+          },
+          options: {animation: google.maps.Animation.BOUNCE},
+        }
       });
     });
   }
@@ -92,5 +124,17 @@ export class IncidentsComponent implements OnInit {
     });
 
     this.message = "L'incident a bien été clos !";
+  }
+
+  click(event: google.maps.MapMouseEvent): void {
+    console.log(event);
+  }
+
+  infoContent?: IncidentView;
+
+  openInfo(marker: MapMarker, infoWindow: MapInfoWindow, content: any) {
+    infoWindow.open(marker)
+    this.infoContent = content
+    console.log(this.infoContent);
   }
 }

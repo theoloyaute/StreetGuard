@@ -7,7 +7,10 @@
 }
 
 .card {
-  width: 65%;
+  width: 45rem;
+  height: 45rem;
+  padding: 0.5rem;
+  margin: 1rem;
   border-radius: 10px;
 }
 
@@ -15,11 +18,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 0.5rem 0.5rem;
 }
 
 .card .card-content h5 {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 500;
   margin: 0;
   padding: 0;
@@ -39,4 +42,37 @@
 
 .card .card-button button {
   padding: 1rem 2rem;
+}
+
+.card .card-position {
+  position: relative;
+  top: -41rem;
+  left: 30%;
+}
+
+.p-success {
+  color: #007e33;
+  font-size: 1rem;
+  margin: 0.5rem 0 0 0.5rem;
+}
+
+
+@media (max-width: 768px) {
+  .card {
+    width: 100%;
+  }
+
+  .card .card-position {
+    left: 12.5%;
+  }
+}
+
+@media (max-height: 768px) {
+  .card {
+    height: 35rem;
+  }
+
+  .card .card-position {
+    top: -30rem;
+  }
 }

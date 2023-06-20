@@ -5,7 +5,7 @@
     <div class="card p-fluid">
       <div>
         <div class="card-title">
-          <h1 class="text-center">En avant super-héro</h1>
+          <h1 class="text-center">En avant super-héro !</h1>
         </div>
         <div class="p-float-label">
           <input pInputText [(ngModel)]="username" id="username" type="text"/>
@@ -23,7 +23,8 @@
         </p-divider>
       </div>
       <div class="card-container">
-        <p-button label="Rejoindre" icon="pi pi-user-plus" styleClass="p-button-success" [routerLink]="['/users']"></p-button>
+        <p-button label="Rejoindre" icon="pi pi-user-plus" styleClass="p-button-success"
+                  [routerLink]="['/users']"></p-button>
       </div>
     </div>
     <span class="p-error" *ngIf="errorMessage" [@fadeOut]="errorMessage">{{ errorMessage }}</span>

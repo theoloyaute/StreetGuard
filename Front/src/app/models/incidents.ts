@@ -12,3 +12,12 @@ export interface Incidents {
   city?: City;
   incidentType?: IncidentType;
 }
+
+export interface IncidentView {
+  id?: number;
+  date?: any;
+  description?: string;
+  cityName?: string;
+  incidentTypeName?: string;
+  distance?: number;
+}
