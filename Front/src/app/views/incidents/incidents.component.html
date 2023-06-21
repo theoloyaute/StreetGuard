@@ -32,10 +32,10 @@
           </div>
           <div class="card-content">
             <h5>Distance :</h5>
-            <span class="card-subtitle">{{ infoContent?.distance }}</span>
+            <span class="card-subtitle">{{ infoContent?.distance }} km</span>
           </div>
           <div class="card-button">
-            <button pButton (click)="delete(incident?.id!)">Fait</button>
+            <button pButton (click)="delete(infoContent?.id)">Fait</button>
           </div>
         </div>
       </map-info-window>

@@ -68,6 +68,15 @@ export class HomeComponent implements OnInit {
       cityId: this.selectedCity?.id
     }
 
+    if (incident.longitude == 0 || incident.latitude == 0) {
+      this.errorMessage = "Il faut remplir tous les champs !";
+      setTimeout(() => {
+          this.errorMessage = "";
+        }
+        , 5000);
+      return;
+    }
+
     this.IncidentsService.addIncident(incident).subscribe(result => {
       this.succesMessage = "Incident créé avec succès !";
       setTimeout(() => {

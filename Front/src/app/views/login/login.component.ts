@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.authentificationService.login(this.username, this.password).subscribe(result => {
-      this.router.navigate(['/']);
+      this.router.navigate(['/incidents']);
     }, (error: HttpErrorResponse) => {
       if (error.status == 400) {
         this.errorMessage = "Username ou mot de passe incorrect !";

@@ -14,7 +14,7 @@ export interface Incidents {
 }
 
 export interface IncidentView {
-  id?: number;
+  id?: any;
   date?: any;
   description?: string;
   cityName?: string;
